@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RAQ_Store.Models;
+using RAQ_Store.ViewModels;
 
 namespace RAQ_Store.Controllers
 {
@@ -14,6 +15,112 @@ namespace RAQ_Store.Controllers
     {
         private StoreContext db = new StoreContext();
 
+
+        public ActionResult ViewProduct()
+        {
+
+            ProductCategory prca = new ProductCategory
+            {
+                Product = db.Products.ToList(),
+                Category = db.Categories.ToList()
+            };
+            return View(prca);
+        }
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+
+            ProductCategory prca = new ProductCategory
+            {
+                Category = db.Categories.ToList()
+            };
+
+            return View(prca);
+        }
+        [HttpPost]
+        public ActionResult AddProduct(ProductCategory prca)
+        {
+            db.Products.Add(prca.MyProduct);
+
+            db.SaveChanges();
+            return RedirectToAction("ViewProduct");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Details(int ID)
+        {
+            var product = db.Products.ToList().Single(c => c.id == ID);
+
+            ProductCategory prca = new ProductCategory
+            {
+                MyProduct = product,
+                MyCategory = db.Categories.ToList().Single(c => c.id == product.category_id),
+            };
+
+
+            return View(prca);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Update(int ID)
+        {
+
+            var product = db.Products.ToList().Single(c => c.id == ID);
+
+            ProductCategory prca = new ProductCategory
+            {
+                MyProduct = product,
+                MyCategory = db.Categories.ToList().Single(c => c.id == product.category_id),
+                Category = db.Categories.ToList()
+            };
+
+
+            return View(prca);
+        }
+        [HttpPost]
+        public ActionResult Update(ProductCategory prca)
+        {
+            if (!ModelState.IsValid)
+            {
+                var mcat = db.Categories.ToList();
+                prca.Category = mcat;
+                return View("Update", prca);
+            }
+
+            var productDb = db.Products.ToList().Single(c => c.id == prca.MyProduct.id);
+            productDb.name = prca.MyProduct.name;
+            productDb.price = prca.MyProduct.price;
+            productDb.category_id = prca.MyProduct.category_id;
+            productDb.description = prca.MyProduct.description;
+            productDb.image = prca.MyProduct.image;
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("ViewProduct");
+
+
+        }
+        [HttpGet]
+        public ActionResult Delete(int ID)
+        {
+
+            var product = db.Products.Single(c => c.id == ID);
+            db.Products.Remove(product);
+            db.SaveChanges();
+
+            return RedirectToAction("ViewProduct");
+
+        }
+    }
+}
+
+
+        /**
         // GET: Products
         public ActionResult Index()
         {
@@ -129,4 +236,4 @@ namespace RAQ_Store.Controllers
             base.Dispose(disposing);
         }
     }
-}
+}**/
