@@ -4,10 +4,6 @@
     ViewBag.Title = "ViewProduct";
 }
 
-
-
-
-
 <div class="form-group" style="margin-top: 10px;">
     <div class="input-group">
         <span class="input-group-addon">Filter</span>
@@ -27,15 +23,11 @@
                 <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
                 <p class="card-text"> @Html.DisplayFor(modelItem => item.price)</p>
                 @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id , time = @DateTime.Now }, new { @class = "btn btn-primary" })
 
             </div>
         </div>
     }
 
 </div>
-
-
-
-
-
 

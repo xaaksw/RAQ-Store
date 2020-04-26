@@ -12,5 +12,7 @@ namespace RAQ_Store.ViewModels
         public List<Category> Category { get; set; }
         public Product MyProduct { get; set; }
         public Category MyCategory { get; set; }
+        public  List<Cart> cart { get; set; }
+        public Cart Mycart { get; set; }
     }
 }

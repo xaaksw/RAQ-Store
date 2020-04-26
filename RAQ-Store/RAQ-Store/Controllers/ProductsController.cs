@@ -22,9 +22,29 @@ namespace RAQ_Store.Controllers
             ProductCategory prca = new ProductCategory
             {
                 Product = db.Products.ToList(),
-                Category = db.Categories.ToList()
+                Category = db.Categories.ToList(),
+                cart = db.Cart.ToList()
             };
             return View(prca);
+        }
+
+        [HttpGet]
+        public ActionResult AddCart(int ID, DateTime time)
+        {
+            Cart adcrt = new Cart
+            { added_at = time,
+                product_id = ID
+            };
+            ProductCategory prca = new ProductCategory
+            {
+                Mycart = adcrt
+            };
+
+            db.Cart.Add(prca.Mycart);
+
+            db.SaveChanges();
+
+            return RedirectToAction("ViewProduct");
         }
         [HttpGet]
         public ActionResult AddProduct()
@@ -37,6 +57,17 @@ namespace RAQ_Store.Controllers
 
             return View(prca);
         }
+        [HttpGet]
+        public ActionResult RemoveCart(int ID)
+        {
+
+            var car = db.Cart.Single(c => c.product_id == ID);
+            db.Cart.Remove(car);
+            db.SaveChanges();
+
+            return RedirectToAction("ViewProduct");
+
+        }
         [HttpPost]
         public ActionResult AddProduct(ProductCategory prca)
         {
@@ -45,7 +76,18 @@ namespace RAQ_Store.Controllers
             db.SaveChanges();
             return RedirectToAction("ViewProduct");
         }
+    
+        public ActionResult Cart()
+        {
+            ProductCategory prca = new ProductCategory
+            {
+                Product = db.Products.ToList(),
+                cart =db.Cart.ToList()
+            };
 
+            return View(prca);
+        }
+      
 
 
         [HttpGet]
@@ -116,6 +158,7 @@ namespace RAQ_Store.Controllers
             return RedirectToAction("ViewProduct");
 
         }
+      
     }
 }
 
