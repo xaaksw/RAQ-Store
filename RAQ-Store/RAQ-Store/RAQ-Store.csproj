@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202004260101515_makingCart.designer.cs">
       <DependentUpon>202004260101515_makingCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004262303067_validationChanges.cs" />
+    <Compile Include="Migrations\202004262303067_validationChanges.designer.cs">
+      <DependentUpon>202004262303067_validationChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
@@ -201,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004260101515_makingCart.resx">
       <DependentUpon>202004260101515_makingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004262303067_validationChanges.resx">
+      <DependentUpon>202004262303067_validationChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

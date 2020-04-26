@@ -13,6 +13,7 @@ namespace RAQ_Store.Models
         public int id { get; set; }
 
         [Required]
+        [Display(Name = "Category Name")]
         public string name { get; set; }
 
 

@@ -12,15 +12,21 @@ namespace RAQ_Store.Models
     {
         public int id { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Please enter name"), MaxLength(30)]
+        [Display(Name = "Product Name")]
         public string name { get; set; }
 
+        [Display(Name = "Product Price")]
         public double? price { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage ="pleae enter image")]
+        [Display(Name = "Product image")]
         public string image { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Please enter description"), MaxLength(200)]
         public string description { get; set; }
 
         public Category Category { get; set; }

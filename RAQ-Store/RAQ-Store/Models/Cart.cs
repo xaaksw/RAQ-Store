@@ -18,6 +18,7 @@ namespace RAQ_Store.Models
 
 
         [DataType(DataType.DateTime)]
+
         public DateTime added_at { get; set; }
 
 
