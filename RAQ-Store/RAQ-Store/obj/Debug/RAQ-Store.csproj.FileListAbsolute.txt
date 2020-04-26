@@ -166,3 +166,4 @@ D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Store.csproj.Genera
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Store.csproj.CopyComplete
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Store.dll
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Store.pdb
+D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.makingCart.resources
