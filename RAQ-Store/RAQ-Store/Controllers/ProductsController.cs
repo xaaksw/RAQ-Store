@@ -71,9 +71,17 @@ namespace RAQ_Store.Controllers
         [HttpPost]
         public ActionResult AddProduct(ProductCategory prca)
         {
-            db.Products.Add(prca.MyProduct);
+            if (!ModelState.IsValid)
+            {
+                prca.Category = db.Categories.ToList();
+                return View(prca);
+            }
+            else 
+            {
+                db.Products.Add(prca.MyProduct);
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
             return RedirectToAction("ViewProduct");
         }
     

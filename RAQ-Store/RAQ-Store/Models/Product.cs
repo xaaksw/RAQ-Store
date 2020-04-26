@@ -27,11 +27,14 @@ namespace RAQ_Store.Models
 
 
         [Required(ErrorMessage = "Please enter description"), MaxLength(200)]
+        [Display(Name = "Product Description")]
         public string description { get; set; }
 
         public Category Category { get; set; }
 
         [ForeignKey("Category")]
+        [Required(ErrorMessage = "pleae choose category")]
+        [Display(Name = "Product Category")]
         public int? category_id { get; set; }
     }
 }
