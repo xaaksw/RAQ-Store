@@ -190,6 +190,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\ViewProduct.cshtml" />
     <Content Include="Views\Products\AddProduct.cshtml" />
+    <Content Include="Views\Products\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004120927160_FirstMigration.resx">
