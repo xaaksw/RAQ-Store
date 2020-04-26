@@ -1,59 +1,33 @@
-﻿@model RAQ_Store.Models.Product
+﻿@model RAQ_Store.ViewModels.ProductCategory
+
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
     </dl>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title" style="text-align-last:center">@Model.MyProduct.name - @Model.MyProduct.price {@Model.MyCategory.name }</h2>
+            <hr />
+        </div>
+        <img class="card-img-bottom" src="@Model.MyProduct.image" alt="Card image cap">
+        <hr />
+        <div class="card-body">
+            <p class="card-text">@Model.MyProduct.description</p>
+        </div>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="btn-group btn-group-justified">
+
+        @Html.ActionLink("Update", "Update", new { id = Model.MyProduct.id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Delete", "Delete", new { id = Model.MyProduct.id }, new { @class = "btn btn-danger" })
+
+    </div>
+
 </p>
+
