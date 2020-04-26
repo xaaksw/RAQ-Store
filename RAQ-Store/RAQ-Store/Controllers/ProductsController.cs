@@ -75,13 +75,11 @@ namespace RAQ_Store.Controllers
             {
                 prca.Category = db.Categories.ToList();
                 return View(prca);
-            }
-            else 
-            {
-                db.Products.Add(prca.MyProduct);
+            } 
+            
+            db.Products.Add(prca.MyProduct);
+            db.SaveChanges();
 
-                db.SaveChanges();
-            }
             return RedirectToAction("ViewProduct");
         }
     

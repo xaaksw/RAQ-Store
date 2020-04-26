@@ -20,6 +20,8 @@
             <div class="form-group" style="margin-left: 222px;">
                 <label for="Picture">Product Picture</label>
                 @Html.TextBoxFor(model => model.MyProduct.image, new { type = "file" })
+                @Html.ValidationMessageFor(model => model.MyProduct.image, "", new { @class = "text-danger" })
+
             </div>
             <div class="form-group">
 
