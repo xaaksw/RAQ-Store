@@ -4,8 +4,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using RAQ_Store.Models;
 using RAQ_Store.ViewModels;
 
@@ -15,7 +17,7 @@ namespace RAQ_Store.Controllers
     {
         private StoreContext db = new StoreContext();
 
-
+        [HttpGet]
         public ActionResult ViewProduct()
         {
 
@@ -27,7 +29,31 @@ namespace RAQ_Store.Controllers
             };
             return View(prca);
         }
+        [HttpPost]
+        public ActionResult ViewProduct(int? ID)
+        {
+            if ((ID ?? 0) == 0)
+            {
+                ProductCategory prca = new ProductCategory
+                {
+                    Product = db.Products.ToList(),
+                    Category = db.Categories.ToList(),
+                    cart = db.Cart.ToList()
+                };
+                return View(prca);
+            }
+            var product = db.Products.ToList().Where(c => c.category_id == ID);
 
+            ProductCategory prc = new ProductCategory
+            {
+                Product = product.ToList(),
+                Category = db.Categories.ToList()
+              
+            };
+
+
+            return View(prc);
+        }
         [HttpGet]
         public ActionResult AddCart(int ID, DateTime time)
         {
@@ -75,8 +101,10 @@ namespace RAQ_Store.Controllers
             {
                 prca.Category = db.Categories.ToList();
                 return View(prca);
-            } 
-            
+            }
+            var CategDb = db.Categories.ToList().Single(c => c.id == prca.MyProduct.category_id);
+            CategDb.number_of_products = CategDb.number_of_products+1;
+
             db.Products.Add(prca.MyProduct);
             db.SaveChanges();
 
@@ -158,6 +186,8 @@ namespace RAQ_Store.Controllers
         {
 
             var product = db.Products.Single(c => c.id == ID);
+            var CategDb = db.Categories.ToList().Single(c => c.id == product.category_id);
+            CategDb.number_of_products = CategDb.number_of_products-1;
             db.Products.Remove(product);
             db.SaveChanges();
 

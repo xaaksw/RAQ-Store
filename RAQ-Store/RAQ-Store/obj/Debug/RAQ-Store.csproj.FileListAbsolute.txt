@@ -255,3 +255,5 @@ C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Stor
 C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ-Store.pdb
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges.resources
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges1.resources
+C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges.resources
+C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges1.resources

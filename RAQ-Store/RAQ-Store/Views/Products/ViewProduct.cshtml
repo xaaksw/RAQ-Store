@@ -3,31 +3,36 @@
 @{
     ViewBag.Title = "ViewProduct";
 }
+@using (Html.BeginForm("ViewProduct", "Products",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group" style="margin-top: 10px;">
+        <div class="input-group">
+            <span class="input-group-addon">
+                    <button class="btn btn-outline-secondary" type="submit"style="width: 61px;height: 19px;padding-top: 0px;padding-bottom: 0px;">Filter</button>
+            </span>
+            @Html.DropDownList("ID", new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
 
-<div class="form-group" style="margin-top: 10px;">
-    <div class="input-group">
-        <span class="input-group-addon">Filter</span>
-        @Html.DropDownListFor(model => model.MyProduct.category_id, new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
-
-        @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "btn btn-default" })
-    </div>
-</div>
-
-<hr style="margin-top: 5px;">
-<div class="row">
-    @foreach (var item in Model.Product)
-    {
-        <div class="col-sm-4">
-            <img src="@item.image" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
-                <p class="card-text"> @Html.DisplayFor(modelItem => item.price)</p>
-                @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id , time = @DateTime.Now }, new { @class = "btn btn-primary" })
-
-            </div>
+            @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "btn btn-default" })
         </div>
-    }
+    </div>
+}
 
-</div>
+    <hr style="margin-top: 5px;">
+    <div class="row">
+        @foreach (var item in Model.Product)
+        {
+            <div class="col-sm-4">
+                <img src="@item.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
+                    <p class="card-text"> @Html.DisplayFor(modelItem => item.price)</p>
+                    @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id, time = @DateTime.Now }, new { @class = "btn btn-primary" })
+
+                </div>
+            </div>
+        }
+
+    </div>
 
