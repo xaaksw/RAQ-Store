@@ -17,6 +17,7 @@ namespace RAQ_Store.Controllers
     {
         private StoreContext db = new StoreContext();
 
+        // this is our index , to show all products 
         [HttpGet]
         public ActionResult ViewProduct()
         {
@@ -29,6 +30,7 @@ namespace RAQ_Store.Controllers
             };
             return View(prca);
         }
+        // this is index when hitting filter button 
         [HttpPost]
         public ActionResult ViewProduct(int? ID)
         {
@@ -54,6 +56,21 @@ namespace RAQ_Store.Controllers
 
             return View(prc);
         }
+
+        //open the cart action 
+        public ActionResult Cart()
+        {
+            ProductCategory prca = new ProductCategory
+            {
+                Product = db.Products.ToList(),
+                cart = db.Cart.ToList()
+            };
+
+            return View(prca);
+        }
+
+
+        // Add cart button action 
         [HttpGet]
         public ActionResult AddCart(int ID, DateTime time)
         {
@@ -72,17 +89,8 @@ namespace RAQ_Store.Controllers
 
             return RedirectToAction("ViewProduct");
         }
-        [HttpGet]
-        public ActionResult AddProduct()
-        {
 
-            ProductCategory prca = new ProductCategory
-            {
-                Category = db.Categories.ToList()
-            };
-
-            return View(prca);
-        }
+        // remove from cart button action 
         [HttpGet]
         public ActionResult RemoveCart(int ID)
         {
@@ -94,6 +102,20 @@ namespace RAQ_Store.Controllers
             return RedirectToAction("ViewProduct");
 
         }
+
+        // add product button which load add product page 
+        [HttpGet]
+        public ActionResult AddProduct()
+        {
+
+            ProductCategory prca = new ProductCategory
+            {
+                Category = db.Categories.ToList()
+            };
+
+            return View(prca);
+        }
+        // add proudct action button 
         [HttpPost]
         public ActionResult AddProduct(ProductCategory prca)
         {
@@ -110,20 +132,8 @@ namespace RAQ_Store.Controllers
 
             return RedirectToAction("ViewProduct");
         }
-    
-        public ActionResult Cart()
-        {
-            ProductCategory prca = new ProductCategory
-            {
-                Product = db.Products.ToList(),
-                cart =db.Cart.ToList()
-            };
-
-            return View(prca);
-        }
-      
-
-
+        
+        // get product details
         [HttpGet]
         public ActionResult Details(int ID)
         {
@@ -134,13 +144,11 @@ namespace RAQ_Store.Controllers
                 MyProduct = product,
                 MyCategory = db.Categories.ToList().Single(c => c.id == product.category_id),
             };
-
-
             return View(prca);
         }
 
 
-
+        // get update product page 
         [HttpGet]
         public ActionResult Update(int ID)
         {
@@ -157,6 +165,7 @@ namespace RAQ_Store.Controllers
 
             return View(prca);
         }
+        // Update proudct action button
         [HttpPost]
         public ActionResult Update(ProductCategory prca)
         {
@@ -168,33 +177,33 @@ namespace RAQ_Store.Controllers
             }
 
             var productDb = db.Products.ToList().Single(c => c.id == prca.MyProduct.id);
+
             productDb.name = prca.MyProduct.name;
             productDb.price = prca.MyProduct.price;
             productDb.category_id = prca.MyProduct.category_id;
             productDb.description = prca.MyProduct.description;
             productDb.image = prca.MyProduct.image;
+
             db.SaveChanges();
 
-
-
             return RedirectToAction("ViewProduct");
-
-
         }
+
+        // Delete Product action button
         [HttpGet]
         public ActionResult Delete(int ID)
         {
 
             var product = db.Products.Single(c => c.id == ID);
             var CategDb = db.Categories.ToList().Single(c => c.id == product.category_id);
+
             CategDb.number_of_products = CategDb.number_of_products-1;
+
             db.Products.Remove(product);
             db.SaveChanges();
 
             return RedirectToAction("ViewProduct");
-
-        }
-      
+        }      
     }
 }
 
