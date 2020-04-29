@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -117,13 +118,18 @@ namespace RAQ_Store.Controllers
         }
         // add proudct action button 
         [HttpPost]
-        public ActionResult AddProduct(ProductCategory prca)
+        public ActionResult AddProduct(ProductCategory prca, HttpPostedFileBase image)
         {
             if (!ModelState.IsValid)
             {
                 prca.Category = db.Categories.ToList();
                 return View(prca);
             }
+                // this 2 lines provide an errorr and it's not working ! image = null ;
+                ///string path = Path.Combine(Server.MapPath("~/Images"), prca.MyProduct.image);
+                //image.SaveAs(path);
+
+
             var CategDb = db.Categories.ToList().Single(c => c.id == prca.MyProduct.category_id);
             CategDb.number_of_products = CategDb.number_of_products+1;
 

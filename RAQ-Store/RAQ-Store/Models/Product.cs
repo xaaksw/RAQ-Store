@@ -21,9 +21,12 @@ namespace RAQ_Store.Models
         public double? price { get; set; }
 
 
+        
         [Required(ErrorMessage ="pleae enter image")]
+        [DataType(DataType.Upload)]
         [Display(Name = "Product image")]
         public string image { get; set; }
+        
 
 
         [Required(ErrorMessage = "Please enter description"), MaxLength(200)]

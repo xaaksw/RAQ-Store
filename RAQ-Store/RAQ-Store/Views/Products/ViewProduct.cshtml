@@ -22,8 +22,8 @@
     <div class="row">
         @foreach (var item in Model.Product)
         {
-            <div style="width:200px;height:439px; margin:45px" class="card col-md-3" >
-                <img src="~/Images/@item.image" class="img-thumbnail">
+            <div style="width:200px; margin:45px;border: 1px solid #ddd;" class="card col-md-3" >
+                <img src="~/Images/@item.image" class="img-thumbnail" style="border: none;">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
                     
