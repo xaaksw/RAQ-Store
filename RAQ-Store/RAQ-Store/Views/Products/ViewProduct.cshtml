@@ -22,12 +22,14 @@
     <div class="row">
         @foreach (var item in Model.Product)
         {
-            <div class="col-sm-4">
-                <img src="@item.image" class="card-img-top" alt="...">
+            <div style="width:200px;height:439px; margin:45px" class="card col-md-3" >
+                <img src="~/Images/@item.image" class="img-thumbnail">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
+                    
                     <p class="card-text"> @Html.DisplayFor(modelItem => item.price)</p>
                     @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+
                     @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id, time = @DateTime.Now }, new { @class = "btn btn-primary" })
 
                 </div>
