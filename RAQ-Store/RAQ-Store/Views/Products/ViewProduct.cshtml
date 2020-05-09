@@ -3,38 +3,74 @@
 @{
     ViewBag.Title = "ViewProduct";
 }
-@using (Html.BeginForm("ViewProduct", "Products",FormMethod.Post))
+<!-- Page Content -->
+
+@using (Html.BeginForm("ViewProduct", "Products", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-group" style="margin-top: 10px;">
         <div class="input-group">
             <span class="input-group-addon">
-                    <button class="btn btn-outline-secondary" type="submit"style="width: 61px;height: 19px;padding-top: 0px;padding-bottom: 0px;">Filter</button>
+                <button class="btn btn-outline-secondary" type="submit" style="width: 61px;height: 19px;padding-top: 0px;padding-bottom: 0px;">Filter</button>
             </span>
             @Html.DropDownList("ID", new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
 
-            @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "filled-button",@style ="margin-left:10px; margin-right:10px" })
         </div>
     </div>
 }
 
-    <hr style="margin-top: 5px;">
-    <div class="row">
-        @foreach (var item in Model.Product)
-        {
-            <div style="width:200px; margin:45px;border: 1px solid #ddd;" class="card col-md-3" >
-                <img src="~/Images/@item.image" class="img-thumbnail" style="border: none;">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.name)</h5>
-                    
-                    <p class="card-text"> @Html.DisplayFor(modelItem => item.price)</p>
-                    @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+<hr style="margin-top: 5px;">
 
-                    @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id, time = @DateTime.Now }, new { @class = "btn btn-primary" })
+<div class="latest-products">
+    <div class="container">
+        <div class="row">
 
+            @foreach (var item in Model.Product)
+            {
+
+                <div class="col-lg-3 col-md-4 col-sm-4">
+                    <div class="product-item">
+                        <a href="#"><img class="card-img" src="~/Images/@item.image" alt=""></a>
+                        <div class="down-content">
+                            <a href="#"><h4>@Html.DisplayFor(modelItem => item.name)</h4></a>
+                            <h6>$@Html.DisplayFor(modelItem => item.price)</h6>
+                            <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                            <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+
+                            @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "filled-button", @style = " margin-bottom:10px;" })
+                            @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id, time = @DateTime.Now }, new { @class = "filled-button" })
+
+
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        }
-
+            }
+        </div>
     </div>
+</div>
+
+
+
+                <!--
+                <div style="width:200px; margin:45px;border: 1px solid #ddd;" class="card col-md-3">
+                    <img src="~/Images/item.image" class="img-thumbnail" style="border: none;">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+
+                        <p class="card-text"> </p>
+
+
+                    </div>
+                </div>-->
+            
+
+        
 
