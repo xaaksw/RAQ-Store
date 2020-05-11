@@ -258,3 +258,4 @@ D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.va
 C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges.resources
 C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.validationChanges1.resources
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.imgChange.resources
+C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.imgChange.resources

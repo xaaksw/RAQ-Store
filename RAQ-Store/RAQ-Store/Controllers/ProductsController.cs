@@ -58,7 +58,8 @@ namespace RAQ_Store.Controllers
             return View(prc);
         }
 
-        //open the cart action 
+        //open the cart action
+        [ChildActionOnly]
         public ActionResult Cart()
         {
             ProductCategory prca = new ProductCategory
@@ -67,7 +68,7 @@ namespace RAQ_Store.Controllers
                 cart = db.Cart.ToList()
             };
 
-            return View(prca);
+            return PartialView(prca);
         }
 
 
