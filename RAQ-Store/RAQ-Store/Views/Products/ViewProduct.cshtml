@@ -9,13 +9,13 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-group" style="margin-top: 10px;">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <button class="btn btn-outline-secondary" type="submit" style="width: 61px;height: 19px;padding-top: 0px;padding-bottom: 0px;">Filter</button>
-            </span>
+        <div class="input-group align-items-baseline">
+        
+            <button class="btn btn-outline-warning" type="submit" style="margin-left: 10px;margin-right: 10px;width: 106px;height: 35px;">Filter</button>
+            
             @Html.DropDownList("ID", new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
 
-            @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "filled-button",@style ="margin-left:10px; margin-right:10px" })
+            @Html.ActionLink("Add Product", "AddProduct", null, new { @class = "filled-button",@style = "margin-left:10px;margin-right:10px;padding-top: 10px;padding-bottom: 6px;padding-right: 12px;padding-left: 12px;" })
         </div>
     </div>
 }

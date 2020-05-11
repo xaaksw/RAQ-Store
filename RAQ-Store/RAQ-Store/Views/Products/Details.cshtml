@@ -11,23 +11,19 @@
     </dl>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title" style="text-align-last:center">@Model.MyProduct.name - @Model.MyProduct.price {@Model.MyCategory.name }</h2>
-            <hr />
-        </div>
-         <img class="card-img-bottom" src="~/Images/@Model.MyProduct.image" alt="Card image cap">
+           <h2 class="card-title" style="text-align-last:center">@Model.MyProduct.name - @Model.MyProduct.price {@Model.MyCategory.name }</h2>
         <hr />
-        <div class="card-body">
-            <p class="card-text">@Model.MyProduct.description</p>
         </div>
-    </div>
-</div>
+                <img class="card-img-bottom" src="~/Images/@Model.MyProduct.image" alt="Card image cap">
+                <hr />
+                <div class="card-body">
+                    <p class="card-text">@Model.MyProduct.description</p>
+                </div>
+            </div>
+        </div>
 <p>
-    <div class="btn-group btn-group-justified">
-
-        @Html.ActionLink("Update", "Update", new { id = Model.MyProduct.id }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Delete", "Delete", new { id = Model.MyProduct.id }, new { @class = "btn btn-danger" })
-
+    <div class="btn-group d-flex" role="group">
+        @Html.ActionLink("Update", "Update", new { id = Model.MyProduct.id }, new { @class = "btn btn-primary w-100" })
+        @Html.ActionLink("Delete", "Delete", new { id = Model.MyProduct.id }, new { @class = "btn btn-danger w-100" })
     </div>
-
 </p>
-
