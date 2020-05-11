@@ -62,6 +62,7 @@ namespace RAQ_Store.Controllers
         [ChildActionOnly]
         public ActionResult Cart()
         {
+
             ProductCategory prca = new ProductCategory
             {
                 Product = db.Products.ToList(),

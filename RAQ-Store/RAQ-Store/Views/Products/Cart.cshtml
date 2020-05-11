@@ -12,24 +12,52 @@
     {
         if (item.id == car.product_id)
         {
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="input-group">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <div class="input-group">
 
-                            <span type="button" class="btn input-group-addon">@Html.ActionLink("Remove", "RemoveCart", new { id = car.product_id })</span>
+                    <span type="button" class="btn input-group-addon">@Html.ActionLink("Remove", "RemoveCart", new { id = car.product_id })</span>
 
-                            <p class="card-text">
-                                @Html.DisplayFor(modelItem => item.name) - @Html.DisplayFor(modelItem => item.price)
-                            </p>
-                            <p class="card-text"> @Html.DisplayFor(modelItem => car.added_at)</p>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.name) - @Html.DisplayFor(modelItem => item.price)
+                    </p>
 
-                        </div>
-                    </div>
+                    <p>
+                        -
+                        @if ((DateTime.Now - car.added_at).TotalMinutes < 1)
+                        {
+                            // Zero seconds, hopefully that DateTime.Now object
+                            @: <i>just now</i>.
+                        }
+                        else if ((DateTime.Now - car.added_at).TotalMinutes > 0 && (DateTime.Now - car.added_at).TotalMinutes < 60)
+                        {
+                            // Seconds are greater than zero but less than 61 (minute)
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes)) Minutes ago.
+                        }
+                        else if ((DateTime.Now - car.added_at).TotalMinutes > 60 && (DateTime.Now - car.added_at).TotalMinutes < 1440)
+                        {
+                            // seconds are greater than minute but less than hour
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 60)) Hours ago.
+                        }
+                        else if ((DateTime.Now - car.added_at).TotalMinutes > 1440 && (DateTime.Now - car.added_at).TotalMinutes < 43829.0639)
+                        {
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 43829.0639)) Days ago.
+                        }
+                        else if ((DateTime.Now - car.added_at).TotalMinutes > 43829.0639 && (DateTime.Now - car.added_at).TotalMinutes < 525948.766)
+                        {
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 525948.766)) Months ago.
+                        }
+                        else
+                        {
+                            @:more than year ago.
+                        }
                 </div>
             </div>
+        </div>
+    </div>
             <hr />
-}
+        }
     }
 }
 
