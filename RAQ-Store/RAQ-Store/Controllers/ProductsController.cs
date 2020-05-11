@@ -119,17 +119,18 @@ namespace RAQ_Store.Controllers
         }
         // add proudct action button 
         [HttpPost]
-        public ActionResult AddProduct(ProductCategory prca, HttpPostedFileBase image)
+        public ActionResult AddProduct(ProductCategory prca, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
                 prca.Category = db.Categories.ToList();
                 return View(prca);
             }
-                // this 2 lines provide an errorr and it's not working ! image = null ;
-                ///string path = Path.Combine(Server.MapPath("~/Images"), prca.MyProduct.image);
-                //image.SaveAs(path);
-
+           
+             string pic = System.IO.Path.GetFileName(file.FileName);
+              string path = System.IO.Path.Combine(Server.MapPath("~/Images/"), pic);
+              file.SaveAs(path);
+              prca.MyProduct.image=pic;
 
             var CategDb = db.Categories.ToList().Single(c => c.id == prca.MyProduct.category_id);
             CategDb.number_of_products = CategDb.number_of_products+1;

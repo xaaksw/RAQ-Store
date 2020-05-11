@@ -7,7 +7,7 @@
 <h2 style="text-align-last:center">Add New Product</h2>
 
 <hr />
-@using (Html.BeginForm("AddProduct","Products",FormMethod.Post,new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AddProduct","Products",null,FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <form>
@@ -17,8 +17,7 @@
 
             <div class="form-group" style="margin-left: 222px;">
                 <label for="Picture">Product Picture</label>
-                @Html.TextBoxFor(model => model.MyProduct.image, new { name = "image" ,type = "file" })
-                @Html.ValidationMessageFor(model => model.MyProduct.image, "", new { @class = "text-danger" })
+                 <input type="file" name="file" id="file" style="width: 100%;" />
             </div>
             <div class="form-group">
 
@@ -58,6 +57,7 @@
                         <input type="submit" value="Create" class="btn btn-default" style="width: 106px;height: 38px;margin-left: 80px;" />
                     </div>
                 </div>
+            </div>
             </div>
     </form>
 }
