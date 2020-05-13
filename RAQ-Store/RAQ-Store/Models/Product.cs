@@ -22,7 +22,6 @@ namespace RAQ_Store.Models
 
 
         
-        [Required(ErrorMessage ="pleae enter image")]
         [DataType(DataType.Upload)]
         [Display(Name = "Product image")]
         public string image { get; set; }
