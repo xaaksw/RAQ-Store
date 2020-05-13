@@ -77,6 +77,7 @@ namespace RAQ_Store.Controllers
         [HttpGet]
         public ActionResult AddCart(int ID, DateTime time)
         {
+            
             Cart adcrt = new Cart
             { added_at = time,
                 product_id = ID
@@ -95,9 +96,12 @@ namespace RAQ_Store.Controllers
 
         // remove from cart button action 
         [HttpGet]
-        public ActionResult RemoveCart(int ID)
+        public ActionResult RemoveCart(int? ID)
         {
+            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0) {
 
+                return RedirectToAction("ViewProduct");
+            }
             var car = db.Cart.Single(c => c.product_id == ID);
             db.Cart.Remove(car);
             db.SaveChanges();
@@ -145,8 +149,13 @@ namespace RAQ_Store.Controllers
         
         // get product details
         [HttpGet]
-        public ActionResult Details(int ID)
+        public ActionResult Details(int? ID)
         {
+            if (ID == null || db.Products.ToList().Where(s=>s.id==ID).Count()==0) {
+
+                return RedirectToAction("ViewProduct");
+
+            }
             var product = db.Products.ToList().Single(c => c.id == ID);
 
             ProductCategory prca = new ProductCategory
@@ -160,8 +169,14 @@ namespace RAQ_Store.Controllers
 
         // get update product page 
         [HttpGet]
-        public ActionResult Update(int ID)
+        public ActionResult Update(int? ID)
         {
+            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0)
+            {
+
+                return RedirectToAction("ViewProduct");
+
+            }
 
             var product = db.Products.ToList().Single(c => c.id == ID);
 
@@ -208,10 +223,14 @@ namespace RAQ_Store.Controllers
 
         // Delete Product action button
         [HttpGet]
-        public ActionResult Delete(int ID)
+        public ActionResult Delete(int? ID)
         {
+            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0) {
 
-            var product = db.Products.Single(c => c.id == ID);
+                return RedirectToAction("ViewProduct");
+
+            }
+                var product = db.Products.Single(c => c.id == ID);
             var CategDb = db.Categories.ToList().Single(c => c.id == product.category_id);
 
             CategDb.number_of_products = CategDb.number_of_products-1;
