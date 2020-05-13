@@ -127,12 +127,13 @@ namespace RAQ_Store.Controllers
                 prca.Category = db.Categories.ToList();
                 return View(prca);
             }
-           
-             string pic = System.IO.Path.GetFileName(file.FileName);
-              string path = System.IO.Path.Combine(Server.MapPath("~/Images/"), pic);
-              file.SaveAs(path);
-              prca.MyProduct.image=pic;
-
+            if (file != null)
+            {
+                string pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images/"), pic);
+                file.SaveAs(path);
+                prca.MyProduct.image = pic;
+            }
             var CategDb = db.Categories.ToList().Single(c => c.id == prca.MyProduct.category_id);
             CategDb.number_of_products = CategDb.number_of_products+1;
 
@@ -176,7 +177,7 @@ namespace RAQ_Store.Controllers
         }
         // Update proudct action button
         [HttpPost]
-        public ActionResult Update(ProductCategory prca)
+        public ActionResult Update(ProductCategory prca, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -184,14 +185,21 @@ namespace RAQ_Store.Controllers
                 prca.Category = mcat;
                 return View("Update", prca);
             }
-
             var productDb = db.Products.ToList().Single(c => c.id == prca.MyProduct.id);
-
+           if (file!=null)
+            {
+                string pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images/"), pic);
+                file.SaveAs(path);
+                prca.MyProduct.image = pic;
+                productDb.image = prca.MyProduct.image;
+            }
+          
             productDb.name = prca.MyProduct.name;
             productDb.price = prca.MyProduct.price;
             productDb.category_id = prca.MyProduct.category_id;
             productDb.description = prca.MyProduct.description;
-            productDb.image = prca.MyProduct.image;
+
 
             db.SaveChanges();
 

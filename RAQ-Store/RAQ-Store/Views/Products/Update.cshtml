@@ -5,59 +5,86 @@
 }
 
 
-<h2 style="text-align-last:center">Update Product</h2>
-
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(c => c.MyProduct.id)
-    @Html.AntiForgeryToken()
-    <form>
-        <div class="form-horizontal" style="margin-left: 275px;">
-
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="form-group" style="margin-left: 222px;">
-                <label for="Picture">Product Picture</label>
-                @Html.TextBoxFor(model => model.MyProduct.image, new { type = "file" })
-                @Html.ValidationMessageFor(model => model.MyProduct.image, "", new { @class = "text-danger" })
-
-            </div>
-            <div class="form-group">
-
-                @Html.LabelFor(model => model.MyProduct.name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MyProduct.name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MyProduct.name, "", new { @class = "text-danger" })
+<div class="send-message">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Update Product</h2>
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MyProduct.price, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MyProduct.price, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.MyProduct.price, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.MyProduct.category_id, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.MyProduct.category_id, new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
-                    @Html.ValidationMessageFor(model => model.MyProduct.category_id, "", new { @class = "text-danger" })
-                </div>
+            <div class="col-md-8">
+                <div class="contact-form">
+                    @using (Html.BeginForm("Update", "Products", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(c => c.MyProduct.id)
+                        @Html.AntiForgeryToken()
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
 
-                <div class="form-group" style="margin-bottom: 0px;margin-top: 50px;margin-left: 0px;">
-                    @Html.LabelFor(model => model.MyProduct.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.MyProduct.description, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.MyProduct.description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="UPDATE" class="btn btn-default" style="width: 106px;height: 38px;margin-left: 80px;" />
-                    </div>
+                                    <fieldset>
+                                        @Html.LabelFor(model => model.MyProduct.image, htmlAttributes: new { @class = "control-label col-md-6" })
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background-color:#f33f3f;color:whitesmoke">Upload</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="file" name="file">
+                                                <label class="custom-file-label" for="file" style="color:#f33f3f">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        @Html.LabelFor(model => model.MyProduct.name, htmlAttributes: new { @class = "control-label col-md-6" })
+                                        @Html.EditorFor(model => model.MyProduct.name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MyProduct.name, "", new { @class = "text-danger" })
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        @Html.LabelFor(model => model.MyProduct.price, htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                        @Html.EditorFor(model => model.MyProduct.price, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MyProduct.price, "", new { @class = "text-danger" })
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <fieldset>
+                                        @Html.LabelFor(model => model.MyProduct.category_id, htmlAttributes: new { @class = "control-label col-md-6" })
+
+                                        @Html.DropDownListFor(model => model.MyProduct.category_id, new SelectList(Model.Category, "Id", "Name"), "Select Category", new { @class = "form-control " })
+                                        @Html.ValidationMessageFor(model => model.MyProduct.category_id, "", new { @class = "text-danger" })
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <br />
+                                        @Html.LabelFor(model => model.MyProduct.description, htmlAttributes: new { @class = "control-label col-md-6" })
+                                        @Html.TextAreaFor(model => model.MyProduct.description, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MyProduct.description, "", new { @class = "text-danger" })
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button type="submit" value="Create" class="filled-button">Update Product</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
-    </form>
-}
+
+        </div>
+    </div>
+</div>
