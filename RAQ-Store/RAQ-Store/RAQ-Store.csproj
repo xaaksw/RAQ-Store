@@ -153,6 +153,10 @@
     <Compile Include="Migrations\202004290707027_imgChange.designer.cs">
       <DependentUpon>202004290707027_imgChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005130340590_addProductFromTheSameType.cs" />
+    <Compile Include="Migrations\202005130340590_addProductFromTheSameType.designer.cs">
+      <DependentUpon>202005130340590_addProductFromTheSameType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
@@ -391,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004290707027_imgChange.resx">
       <DependentUpon>202004290707027_imgChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005130340590_addProductFromTheSameType.resx">
+      <DependentUpon>202005130340590_addProductFromTheSameType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
