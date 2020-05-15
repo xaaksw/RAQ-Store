@@ -20,7 +20,7 @@
                     <span type="button" class="btn input-group-addon">@Html.ActionLink("Remove", "RemoveCart", new { id = car.product_id ,time = car.added_at })</span>
                     @car.added_at
                     <p class="card-text">
-                        @Html.DisplayFor(modelItem => item.name) - @Html.DisplayFor(modelItem => item.price)
+                        @Html.DisplayFor(modelItem => item.name) -$@Html.DisplayFor(modelItem => item.price)
                     </p>
 
                     <p>

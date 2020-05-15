@@ -76,12 +76,16 @@ namespace RAQ_Store.Controllers
 
         // Add cart button action 
         [HttpGet]
-        public ActionResult AddCart(int ID, DateTime time)
+        public ActionResult AddCart(int? ID, DateTime? time)
         {
-            
+            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0 || time == null)
+            {
+
+                return RedirectToAction("ViewProduct");
+            }
             Cart adcrt = new Cart
-            { added_at = time,
-                product_id = ID
+            { added_at = time.Value,
+                product_id = ID.Value
             };
             ProductCategory prca = new ProductCategory
             {
