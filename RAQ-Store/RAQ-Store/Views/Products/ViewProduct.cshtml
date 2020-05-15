@@ -29,12 +29,12 @@
             @foreach (var item in Model.Product)
             {
 
-                <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="col-lg-2 col-md-4 row-cols-sm-6">
                     <div class="product-item">
                         <a href="#"><img class="card-img" src="~/Images/@item.image" alt=""></a>
                         <div class="down-content">
-                            <a href="#"><h4>@Html.DisplayFor(modelItem => item.name)</h4></a>
-                            <h6>$@Html.DisplayFor(modelItem => item.price)</h6>
+                            <a href="#"><h4 >@Html.DisplayFor(modelItem => item.name)</h4></a>
+                            <h6 style="position: initial;">$@Html.DisplayFor(modelItem => item.price)</h6>
                             <p>@item.description</p>
                             <ul class="stars">
                                 <li><i class="fa fa-star"></i></li>
@@ -44,7 +44,7 @@
                                 <li><i class="fa fa-star"></i></li>
                             </ul>
 
-                            @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "filled-button", @style = " margin-bottom:10px;" })
+                            @Html.ActionLink("More Details", "Details", new { id = item.id }, new { @class = "filled-button", @style = " margin-bottom:10px;padding:10px" })
                             @Html.ActionLink("Add To Cart", "AddCart", new { id = item.id, time = @DateTime.Now }, new { @class = "filled-button" })
 
                         </div>
