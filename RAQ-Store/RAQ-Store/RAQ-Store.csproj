@@ -157,6 +157,10 @@
     <Compile Include="Migrations\202005130340590_addProductFromTheSameType.designer.cs">
       <DependentUpon>202005130340590_addProductFromTheSameType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005150212293_defult-products.cs" />
+    <Compile Include="Migrations\202005150212293_defult-products.designer.cs">
+      <DependentUpon>202005150212293_defult-products.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
@@ -398,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005130340590_addProductFromTheSameType.resx">
       <DependentUpon>202005130340590_addProductFromTheSameType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005150212293_defult-products.resx">
+      <DependentUpon>202005150212293_defult-products.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
