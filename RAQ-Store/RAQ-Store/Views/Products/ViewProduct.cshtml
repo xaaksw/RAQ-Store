@@ -22,14 +22,14 @@
 
 <hr style="margin-top: 5px;">
 
-<div class="latest-products">
-    <div class="container">
-        <div class="row">
+<div class="latest-products col-12">
+    
+        <div style="padding:5px;" class="row">
 
             @foreach (var item in Model.Product)
             {
 
-                <div class="col-lg-2 col-md-4 row-cols-sm-6">
+                <div class="col-lg-2 col-md-4 cols-sm-6">
                     <div class="product-item">
                         <a href="#"><img class="card-img" src="~/Images/@item.image" alt=""></a>
                         <div class="down-content">
@@ -54,7 +54,7 @@
                 </div>
             }
         </div>
-    </div>
+    
 </div>
 
 
