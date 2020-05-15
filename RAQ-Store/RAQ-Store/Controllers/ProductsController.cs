@@ -12,6 +12,7 @@ using Microsoft.Ajax.Utilities;
 using RAQ_Store.Models;
 using RAQ_Store.ViewModels;
 
+
 namespace RAQ_Store.Controllers
 {
     public class ProductsController : Controller
@@ -85,24 +86,22 @@ namespace RAQ_Store.Controllers
             ProductCategory prca = new ProductCategory
             {
                 Mycart = adcrt
-            };
-
-            db.Cart.Add(prca.Mycart);
-
-            db.SaveChanges();
-
+            };            
+                db.Cart.Add(prca.Mycart);
+                db.SaveChanges();
+            
             return RedirectToAction("ViewProduct");
         }
 
         // remove from cart button action 
         [HttpGet]
-        public ActionResult RemoveCart(int? ID)
+        public ActionResult RemoveCart(int? ID , DateTime? time)
         {
-            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0) {
+            if (ID == null || db.Products.ToList().Where(s => s.id == ID).Count() == 0 || time ==null) {
 
                 return RedirectToAction("ViewProduct");
             }
-            var car = db.Cart.Single(c => c.product_id == ID);
+            var car = db.Cart.Single(c => c.product_id == ID && c.added_at == time);
             db.Cart.Remove(car);
             db.SaveChanges();
 
