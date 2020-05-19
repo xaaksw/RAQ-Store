@@ -262,3 +262,4 @@ C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Stor
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.addProductFromTheSameType.resources
 C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.addProductFromTheSameType.resources
 D:\Coding\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.defultproducts.resources
+C:\Users\ahmed\Documents\GitHub\RAQ-Store\RAQ-Store\RAQ-Store\obj\Debug\RAQ_Store.Migrations.defultproducts.resources
