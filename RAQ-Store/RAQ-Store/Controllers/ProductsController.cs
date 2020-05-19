@@ -36,7 +36,7 @@ namespace RAQ_Store.Controllers
         [HttpPost]
         public ActionResult ViewProduct(int? ID)
         {
-            if ((ID ?? 0) == 0)
+            if ((ID ?? 0) == 0 || db.Categories.ToList().Where(s => s.id == ID).Count() == 0)
             {
                 ProductCategory prca = new ProductCategory
                 {
@@ -87,11 +87,8 @@ namespace RAQ_Store.Controllers
             { added_at = time.Value,
                 product_id = ID.Value
             };
-            ProductCategory prca = new ProductCategory
-            {
-                Mycart = adcrt
-            };            
-                db.Cart.Add(prca.Mycart);
+                       
+                db.Cart.Add(adcrt);
                 db.SaveChanges();
             
             return RedirectToAction("ViewProduct");
