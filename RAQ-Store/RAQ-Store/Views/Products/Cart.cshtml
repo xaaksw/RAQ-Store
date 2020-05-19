@@ -18,7 +18,7 @@
                 <div class="input-group">
 
                     <span type="button" class="btn input-group-addon">@Html.ActionLink("Remove", "RemoveCart", new { id = car.product_id ,time = car.added_at })</span>
-                    @car.added_at
+                    
                     <p class="card-text">
                         @Html.DisplayFor(modelItem => item.name) -$@Html.DisplayFor(modelItem => item.price)
                     </p>
@@ -35,18 +35,18 @@
                             // Seconds are greater than zero but less than 61 (minute)
                             @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes)) Minutes ago.
                         }
-                        else if ((DateTime.Now - car.added_at).TotalMinutes > 60 && (DateTime.Now - car.added_at).TotalMinutes < 1440)
+                        else if ((DateTime.Now - car.added_at).TotalHours > 0 && (DateTime.Now - car.added_at).TotalHours < 24)
                         {
                             // seconds are greater than minute but less than hour
-                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 60)) Hours ago.
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalHours)) Hours ago.
                         }
-                        else if ((DateTime.Now - car.added_at).TotalMinutes > 1440 && (DateTime.Now - car.added_at).TotalMinutes < 43829.0639)
+                        else if ((DateTime.Now - car.added_at).TotalDays > 0 && (DateTime.Now - car.added_at).TotalDays < 30)
                         {
-                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 43829.0639)) Days ago.
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalDays)) Days ago.
                         }
-                        else if ((DateTime.Now - car.added_at).TotalMinutes > 43829.0639 && (DateTime.Now - car.added_at).TotalMinutes < 525948.766)
+                        else if ((DateTime.Now - car.added_at).TotalDays > 30 && (DateTime.Now - car.added_at).TotalDays < 365)
                         {
-                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalMinutes / 525948.766)) Months ago.
+                            @:@(Convert.ToInt16((DateTime.Now - car.added_at).TotalDays / 30)) Months ago.
                         }
                         else
                         {
