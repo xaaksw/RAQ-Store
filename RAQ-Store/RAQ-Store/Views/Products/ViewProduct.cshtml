@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ViewProduct";
 }
+
 <!-- Page Content -->
 
 @using (Html.BeginForm("ViewProduct", "Products", FormMethod.Post))
@@ -31,13 +32,12 @@
 
                 <div class="col-lg-2 col-md-4 cols-sm-6">
                     <div class="product-item">
-                        <a href="#"><img class="card-img" src="~/Images/@item.image" alt=""></a>
+                        <a href="#"><img class="card-img" src="~/Images/@item.image" alt="" height="200"></a>
                         <div class="down-content">
                             <a href="#"><h4 >@Html.DisplayFor(modelItem => item.name)</h4></a>
                             <h6 style="position: initial;">$@Html.DisplayFor(modelItem => item.price)</h6>
-                            <p>@item.description</p>
+                            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">@item.description</p>
                             
-
                             <ul class="stars">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>

@@ -19,6 +19,11 @@ namespace RAQ_Store.Controllers
     {
         private StoreContext db = new StoreContext();
 
+        public ActionResult About() {
+
+            return View();
+        }
+
         // this is our index , to show all products 
         [HttpGet]
         public ActionResult ViewProduct()
