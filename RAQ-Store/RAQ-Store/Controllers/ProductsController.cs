@@ -201,9 +201,7 @@ namespace RAQ_Store.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var mcat = db.Categories.ToList();
-                prca.Category = mcat;
-                return View("Update", prca);
+                return View("Update", prca.MyProduct.id);
             }
             var productDb = db.Products.ToList().Single(c => c.id == prca.MyProduct.id);
            if (file!=null)
