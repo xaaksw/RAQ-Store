@@ -201,7 +201,8 @@ namespace RAQ_Store.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Update", prca.MyProduct.id);
+                return RedirectToAction("Update", prca.MyProduct.id);
+
             }
             var productDb = db.Products.ToList().Single(c => c.id == prca.MyProduct.id);
            if (file!=null)
